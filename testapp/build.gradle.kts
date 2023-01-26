@@ -85,8 +85,8 @@ android {
         "maxStorageSizeLimitInBytes"   to (project.properties["MAX_STORAGE_SIZE_LIMIT_IN_BYTES"] ?: 5242880)
         ) + commonPlaceholders
 
-    var stagingManifestPlaceholders = debugManifestPlaceholders
-    //stagingManifestPlaceholders.appName = defaultAppName + " STG"
+    val stagingManifestPlaceholders = debugManifestPlaceholders.toMutableMap()
+    stagingManifestPlaceholders["appName"] = "$defaultAppName STG"
 
     var prodManifestPlaceholders = mutableMapOf(
         "baseUrl"                      to (project.properties["MINIAPP_PROD_SERVER_BASE_URL"] ?: "https://www.example.com/"),
